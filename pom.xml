@@ -44,6 +44,7 @@
 	</dependencyManagement>
 
 	<build>
+		<finalName>weather</finalName>  <!--指定编译输出的jar包名称-->
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
