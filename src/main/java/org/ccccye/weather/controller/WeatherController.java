@@ -22,8 +22,8 @@ public class WeatherController {
     }
 
     @RequestMapping(value = "life", method = RequestMethod.GET)
-    public Life getLife(){
-        Life life = weatherFeignClient.lifeWeather("南宁");
+    public Life getLife(String cityName){
+        Life life = weatherFeignClient.lifeWeather(cityName);
         return life;
     }
 
