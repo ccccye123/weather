@@ -9,4 +9,4 @@ mvn clean package
 cp target/weather.jar ../
 
 # 用docker-compose 部署更新
-docker-compose up --build
+docker-compose up --build &

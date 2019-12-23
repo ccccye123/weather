@@ -1,5 +1,6 @@
 package org.ccccye.weather.controller;
 
+import com.google.common.base.Strings;
 import org.ccccye.weather.dto.Citycode;
 import org.ccccye.weather.dto.Life;
 import org.ccccye.weather.dto.Weather;
@@ -21,6 +22,9 @@ public class WeatherController {
 
     @RequestMapping(value = "today", method = RequestMethod.GET)
     public Weather getToday(String adcode){
+        if (Strings.isNullOrEmpty(adcode)){
+            return new Weather();
+        }
         Citycode citycode = cityCodeFeignClient.queryByAdcode(adcode);
 
         Weather weather = weatherFeignClient.todayWeather(citycode.getCity_ID());
@@ -29,6 +33,10 @@ public class WeatherController {
 
     @RequestMapping(value = "life", method = RequestMethod.GET)
     public Life getLife(String adcode){
+        if (Strings.isNullOrEmpty(adcode)){
+            return new Life();
+        }
+
         Citycode citycode = cityCodeFeignClient.queryByAdcode(adcode);
 
         Life life = weatherFeignClient.lifeWeather(citycode.getCity_CN());
@@ -37,6 +45,10 @@ public class WeatherController {
 
     @RequestMapping(value = "d6", method = RequestMethod.GET)
     public Weather6D getd6(String adcode){
+        if (Strings.isNullOrEmpty(adcode)){
+            return new Weather6D();
+        }
+
         Citycode citycode = cityCodeFeignClient.queryByAdcode(adcode);
 
         Weather6D weather = weatherFeignClient.d6Weather(citycode.getCity_ID());
