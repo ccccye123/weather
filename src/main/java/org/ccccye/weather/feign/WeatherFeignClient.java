@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+/**
+ * 天气接口
+ */
 @FeignClient(name = "weather", url = "http://api.help.bj.cn")
 public interface WeatherFeignClient {
 
