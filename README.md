@@ -1,5 +1,6 @@
 # 简介
 这是一个方便查询天气信息的微信小程序，小程序访问服务器的Nginx，代理Http请求到docker容器的应用程序，后端程序使用SpringBoot框架。
+[微信天气小程序前端](https://github.com/ccccye123/weather-wx "微信天气小程序前端")
 
 # 功能
 - 基本天气信息，温度、湿度、风向等
