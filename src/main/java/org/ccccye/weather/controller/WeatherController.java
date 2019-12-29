@@ -18,8 +18,10 @@ import java.util.List;
 @RequestMapping(value = "/weather/")
 public class WeatherController {
     private final static Log logger = LogFactory.getLog(WeatherController.class);
+
     @Autowired
     private WeatherService weatherService;
+
 
     /**
      * 获取天气数据

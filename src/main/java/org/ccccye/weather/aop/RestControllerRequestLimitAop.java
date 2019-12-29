@@ -45,7 +45,9 @@ public class RestControllerRequestLimitAop {
 
         String ip = request.getRemoteAddr();
         String url = request.getRequestURL().toString();
-        String key = "req_limit_".concat(url).concat(ip);
+        String key = "req_limit_".concat(url).concat("_").concat(ip);
+
+        logger.debug(key);
 
         try {
             long count = redisTemplate.opsForValue().increment(key, 1);

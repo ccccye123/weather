@@ -1,5 +1,5 @@
 weather:
-  type: he  # he:和风,help:帮助之家
+  type: help  # he:和风,help:帮助之家
   he:
     key: e914aa68a5c943bb8d96504b33ce0157
 
@@ -15,6 +15,5 @@ logging:
   level:
     org.ccccye.weather.aop: debug
     org.ccccye.weather.controller: debug
-    org.ccccye.weather.feign.WeatherHeFeignClient: DEBUG
-
-  file: ./weather.log
+    org.ccccye.weather.feign: debug
+  file: ./log/local.log

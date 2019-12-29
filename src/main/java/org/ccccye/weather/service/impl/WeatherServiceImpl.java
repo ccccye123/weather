@@ -1,26 +1,67 @@
 package org.ccccye.weather.service.impl;
 
 import com.google.common.base.Strings;
-import com.google.common.collect.Lists;
 import org.ccccye.weather.common.ServerResponse;
 import org.ccccye.weather.dto.*;
 import org.ccccye.weather.feign.CityCodeFeignClient;
-import org.ccccye.weather.feign.WeatherFeignClient;
 import org.ccccye.weather.service.ExtWeatherService;
 import org.ccccye.weather.service.WeatherService;
 import org.ccccye.weather.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import javax.annotation.PostConstruct;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+/**
+ * 天气服务实现类
+ */
 @Service
 public class WeatherServiceImpl implements WeatherService {
-    @Autowired
-    private ExtWeatherService extWeatherService;
+
+    /**
+     * 城市编码接口
+     */
     @Autowired
     private CityCodeFeignClient cityCodeFeignClient;
+
+    /**
+     * 天气数据接口
+     */
+    private static ExtWeatherService extWeatherService;
+    /**
+     * 和风天气接口
+     */
+    @Autowired
+    private ExtHeWeatherServiceImpl extHeWeatherService;
+    /**
+     * 帮助之家天气接口
+     */
+    @Autowired
+    private ExtHelpWeatherServiceImpl extHelpWeatherService;
+
+    /**
+     * 天气类型
+     */
+    @Value("${weather.type}")
+    private String typeWeather;
+
+
+    /**
+     * 天气数据源配置
+     */
+    @PostConstruct
+    private void init(){
+        if ("he".equals(typeWeather)){
+            extWeatherService = extHeWeatherService;
+        }else{
+            extWeatherService = extHelpWeatherService;
+        }
+    }
+
 
     /**
      * 获取天气数据
@@ -49,39 +90,39 @@ public class WeatherServiceImpl implements WeatherService {
 
     /**
      * 获取实时天气
-     * @param City_ID
+     * @param city
      * @return
      */
     @Override
-    public Weather getToday(String City_ID) {
-        throw new NotImplementedException();
+    public RealTimeWeatherVo getRealTime(Citycode city) {
+        return extWeatherService.getRealTime(city);
     }
 
     /**
-     * 获取实时生活指数
-     * @param City_CN
+     * 获取生活指数
+     * @param city
      * @return
      */
     @Override
-    public Life getLife(String City_CN) {
-        throw new NotImplementedException();
+    public LifeStyleVo getLifeStyle(Citycode city) {
+        return extWeatherService.getLifeStyle(city);
     }
 
     /**
-     * 获取最近6天天气
-     * @param City_ID
+     * 获取天气预告
+     * @param city
      * @return
      */
     @Override
-    public Weather6D getFuture6D(String City_ID) {
-        throw new NotImplementedException();
+    public List<DailyForecastVo> getForecast(Citycode city) {
+        return extWeatherService.getForecast(city);
     }
-
 
     //region 内部函数
     private WeatherVo assembleWeatherVo(RealTimeWeatherVo realtime, LifeStyleVo life, List<DailyForecastVo> dailyForecastVoList, Citycode city){
         WeatherVo vo = new WeatherVo();
 
+        vo.setToday(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         vo.setLocation(city.getCity_CN());
         vo.setCityID(city.getCity_ID());
         vo.setAdCode(city.getAD_code());
@@ -94,6 +135,5 @@ public class WeatherServiceImpl implements WeatherService {
 
         return vo;
     }
-
     //endregion
 }

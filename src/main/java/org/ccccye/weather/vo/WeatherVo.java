@@ -8,6 +8,11 @@ import java.util.List;
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class WeatherVo {
     /**
+     * 今天日期
+     */
+    private String today;
+
+    /**
      * 城市名称
      */
     private String location;
@@ -47,6 +52,14 @@ public class WeatherVo {
      * 天气预报
      */
     private List<DailyForecastVo> forecasts;
+
+    public String getToday() {
+        return today;
+    }
+
+    public void setToday(String today) {
+        this.today = today;
+    }
 
     public RealTimeWeatherVo getRealTime() {
         return realTime;

@@ -1,9 +1,15 @@
 package org.ccccye.weather.service;
 
 import org.ccccye.weather.common.ServerResponse;
+import org.ccccye.weather.dto.Citycode;
 import org.ccccye.weather.dto.Life;
 import org.ccccye.weather.dto.Weather;
 import org.ccccye.weather.dto.Weather6D;
+import org.ccccye.weather.vo.DailyForecastVo;
+import org.ccccye.weather.vo.LifeStyleVo;
+import org.ccccye.weather.vo.RealTimeWeatherVo;
+
+import java.util.List;
 
 public interface WeatherService {
     /**
@@ -15,22 +21,22 @@ public interface WeatherService {
 
     /**
      * 获取实时天气
-     * @param City_ID
+     * @param city
      * @return
      */
-    Weather getToday(String City_ID);
+    RealTimeWeatherVo getRealTime(Citycode city);
 
     /**
      * 获取生活指数
-     * @param City_CN
+     * @param city
      * @return
      */
-    Life getLife(String City_CN);
+    LifeStyleVo getLifeStyle(Citycode city);
 
     /**
-     * 实时+4day+昨天
-     * @param City_ID
+     * 获取天气预告
+     * @param city
      * @return
      */
-    Weather6D getFuture6D(String City_ID);
+    List<DailyForecastVo> getForecast(Citycode city);
 }

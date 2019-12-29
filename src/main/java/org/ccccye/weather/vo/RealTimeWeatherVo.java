@@ -1,6 +1,7 @@
 package org.ccccye.weather.vo;
 
 public class RealTimeWeatherVo {
+
     /**
      * 温度
      * 单位：摄氏度
