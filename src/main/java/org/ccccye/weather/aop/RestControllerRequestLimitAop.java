@@ -1,5 +1,6 @@
 package org.ccccye.weather.aop;
 
+import com.google.common.base.Strings;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.aspectj.lang.JoinPoint;
@@ -43,7 +44,12 @@ public class RestControllerRequestLimitAop {
             throw new RestControllerRequestLimitException("方法中缺失HttpServletRequest参数");
         }
 
-        String ip = request.getRemoteAddr();
+
+        String ip = request.getHeader("X-Real-Ip");  // 经过Nginx后，可以从 X-Real-Ip 头部获取真实地址
+        if (Strings.isNullOrEmpty(ip)){
+            throw new RestControllerRequestLimitException("无法获取真实的IP地址");
+        }
+//        String ip = request.getRemoteAddr();
         String url = request.getRequestURL().toString();
         String key = "req_limit_".concat(url).concat("_").concat(ip);
 
@@ -52,7 +58,7 @@ public class RestControllerRequestLimitAop {
         try {
             long count = redisTemplate.opsForValue().increment(key, 1);
             if (count == 1) {
-                redisTemplate.expire(key, limit.timeout(), TimeUnit.MILLISECONDS);
+                redisTemplate.expire(key, limit.timeOut(), TimeUnit.MILLISECONDS);
             }
             if (count > limit.maxCount()) {
                 logger.info("用户IP[" + ip + "]访问地址[" + url + "]超过了限定的次数[" + limit.maxCount() + "]");
