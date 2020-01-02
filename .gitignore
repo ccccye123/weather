@@ -4,6 +4,7 @@ target/
 !**/src/main/**
 !**/src/test/**
 log
+/.mvn/
 
 ### STS ###
 .apt_generated
@@ -30,3 +31,4 @@ build/
 
 ### VS Code ###
 .vscode/
+

@@ -1,6 +1,10 @@
 package org.ccccye.weather.service.impl;
 
+import com.alibaba.nacos.api.config.annotation.NacosConfigListener;
+import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.google.common.base.Strings;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.ccccye.weather.common.ServerResponse;
 import org.ccccye.weather.dto.*;
 import org.ccccye.weather.feign.CityCodeFeignClient;
@@ -21,6 +25,7 @@ import java.util.List;
  */
 @Service
 public class WeatherServiceImpl implements WeatherService {
+    private final static Log logger = LogFactory.getLog(WeatherServiceImpl.class);
 
     /**
      * 城市编码接口
@@ -46,19 +51,27 @@ public class WeatherServiceImpl implements WeatherService {
     /**
      * 天气类型
      */
-    @Value("${weather.type}")
+    @NacosValue(value = "${type:he}", autoRefreshed = true)
     private String typeWeather;
 
+    @NacosConfigListener(dataId = "weather", groupId = "DEFAULT_GROUP")
+    public void onReceived(String content){
+        init();
+    }
 
     /**
      * 天气数据源配置
      */
     @PostConstruct
     private void init(){
-        if ("he".equals(typeWeather)){
-            extWeatherService = extHeWeatherService;
-        }else{
-            extWeatherService = extHelpWeatherService;
+        try {
+            if ("he".equals(typeWeather)){
+                extWeatherService = extHeWeatherService;
+            }else{
+                extWeatherService = extHelpWeatherService;
+            }
+        }catch(Exception e){
+            throw e;
         }
     }
 

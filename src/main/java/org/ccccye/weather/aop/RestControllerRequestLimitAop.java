@@ -47,9 +47,10 @@ public class RestControllerRequestLimitAop {
 
         String ip = request.getHeader("X-Real-Ip");  // 经过Nginx后，可以从 X-Real-Ip 头部获取真实地址
         if (Strings.isNullOrEmpty(ip)){
-            throw new RestControllerRequestLimitException("无法获取真实的IP地址");
+            ip = request.getRemoteAddr();
+//            throw new RestControllerRequestLimitException("无法获取真实的IP地址");
         }
-//        String ip = request.getRemoteAddr();
+
         String url = request.getRequestURL().toString();
         String key = "req_limit_".concat(url).concat("_").concat(ip);
 
