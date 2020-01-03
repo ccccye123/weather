@@ -1,4 +1,4 @@
-cd weather
+cd city/CityCode
 # 拉取最新代码
 git pull
 
@@ -6,7 +6,7 @@ git pull
 mvn clean package
 
 # 拷贝jar包到weather目录
-cp target/weather.jar ../
+cp target/app.jar ../
 
 # 用docker-compose 部署更新
-docker-compose up --build &
+#docker-compose up --build &

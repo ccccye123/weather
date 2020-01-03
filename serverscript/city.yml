@@ -1,0 +1,6 @@
+version: '2.2'
+services:
+  citycode:
+    build: .
+    ports:
+      - "8081:8080"
