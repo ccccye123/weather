@@ -80,8 +80,14 @@ public class ExtHelpWeatherServiceImpl implements ExtWeatherService {
         Weather6D weather6D = weatherFeignClient.d6Weather(city.getCity_ID());
         List<Weather6Detail> weather6DetailList = weather6D.getData().getForecast();
 
-        for (Weather6Detail item : weather6DetailList){
+        for (int i =0;i<weather6DetailList.size();i++){
+            if (i==0){
+                continue;
+            }
+
+            Weather6Detail item = weather6DetailList.get(i);
             DailyForecastVo forecastVo = new DailyForecastVo();
+
             forecastVo.setDate(item.getDate());
             forecastVo.setTempMax(item.getTemphigh());
             forecastVo.setTempMin(item.getTemplow());
