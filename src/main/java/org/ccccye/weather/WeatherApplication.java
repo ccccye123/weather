@@ -7,7 +7,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableFeignClients
-@NacosPropertySource(dataId = "weather", autoRefreshed = false)
+@NacosPropertySource(dataId = "weather", autoRefreshed = true)
 public class WeatherApplication {
 
 	public static void main(String[] args) {
