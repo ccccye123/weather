@@ -24,6 +24,11 @@ public class WeatherController {
     @Autowired
     private WeatherService weatherService;
 
+    @GetMapping(value = "test")
+    public String test() throws Exception {
+        throw new Exception("sdasdas");
+    }
+
     /**
      * 获取天气数据
      * @param adcode

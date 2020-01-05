@@ -51,27 +51,27 @@ public class WeatherServiceImpl implements WeatherService {
     /**
      * 天气类型
      */
-    @NacosValue(value = "${type:he}", autoRefreshed = true)
+    @NacosValue(value = "${type:he}", autoRefreshed = false)
     private String typeWeather;
 
-    @NacosConfigListener(dataId = "weather", groupId = "DEFAULT_GROUP")
-    public void onReceived(String content){
-        init();
-    }
+//    /**
+//     * 侦听配置变更
+//     * @param content
+//     */
+//    @NacosConfigListener(dataId = "weather", groupId = "DEFAULT_GROUP")
+//    public void onReceived(String content){
+//        init();
+//    }
 
     /**
      * 天气数据源配置
      */
     @PostConstruct
     private void init(){
-        try {
-            if ("he".equals(typeWeather)){
-                extWeatherService = extHeWeatherService;
-            }else{
-                extWeatherService = extHelpWeatherService;
-            }
-        }catch(Exception e){
-            throw e;
+        if ("he".equals(typeWeather)){
+            extWeatherService = extHeWeatherService;
+        }else{
+            extWeatherService = extHelpWeatherService;
         }
     }
 
