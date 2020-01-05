@@ -3,7 +3,7 @@ cd app/weather
 git pull
 
 # 编译jar包
-mvn clean package
+mvn clean package -Dmaven.test.skip=true
 
 # 拷贝jar包到weather目录
 cp target/weather.jar ../
