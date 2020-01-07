@@ -1,4 +1,4 @@
-package org.ccccye.weather.aop;
+package org.ccccye.weather.aspect;
 
 /**
  *

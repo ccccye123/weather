@@ -1,20 +1,17 @@
 package org.ccccye.weather.controller;
 
-import com.alibaba.nacos.api.config.annotation.NacosValue;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import org.ccccye.weather.aop.RestControllerRequestLimit;
+import org.ccccye.weather.aspect.RestControllerRequestLimit;
 import org.ccccye.weather.common.ServerResponse;
 import org.ccccye.weather.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 @RestController
 @RequestMapping(value = "/weather/")
@@ -23,11 +20,6 @@ public class WeatherController {
 
     @Autowired
     private WeatherService weatherService;
-
-    @GetMapping(value = "test")
-    public String test() throws Exception {
-        throw new Exception("sdasdas");
-    }
 
     /**
      * 获取天气数据

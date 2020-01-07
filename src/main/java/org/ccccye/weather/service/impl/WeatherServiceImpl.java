@@ -34,10 +34,6 @@ public class WeatherServiceImpl implements WeatherService {
     private CityCodeFeignClient cityCodeFeignClient;
 
     /**
-     * 天气数据接口
-     */
-    private static ExtWeatherService extWeatherService;
-    /**
      * 和风天气接口
      */
     @Autowired
@@ -51,30 +47,20 @@ public class WeatherServiceImpl implements WeatherService {
     /**
      * 天气类型
      */
-    @NacosValue(value = "${type:he}", autoRefreshed = true)
+    @NacosValue(value = "${weather.type:he}", autoRefreshed = true)
     private String typeWeather;
 
     /**
-     * 侦听配置变更
-     * @param content
+     * 获取第三方天气数据源
+     * @return
      */
-    @NacosConfigListener(dataId = "weather", groupId = "DEFAULT_GROUP")
-    public void onReceived(String content){
-        init();
-    }
-
-    /**
-     * 天气数据源配置
-     */
-    @PostConstruct
-    private void init(){
+    private ExtWeatherService getExtWeatherService(){
         if ("he".equals(typeWeather)){
-            extWeatherService = extHeWeatherService;
+            return extHeWeatherService;
         }else{
-            extWeatherService = extHelpWeatherService;
+            return extHelpWeatherService;
         }
     }
-
 
     /**
      * 获取天气数据
@@ -92,9 +78,9 @@ public class WeatherServiceImpl implements WeatherService {
             return ServerResponse.createByErrorMessage("获取城市编码失败");
         }
 
-        RealTimeWeatherVo realTimeWeatherVo = extWeatherService.getRealTime(city);
-        LifeStyleVo lifeStyleVo = extWeatherService.getLifeStyle(city);
-        List<DailyForecastVo> dailyForecastVoList = extWeatherService.getForecast(city);
+        RealTimeWeatherVo realTimeWeatherVo = getExtWeatherService().getRealTime(city);
+        LifeStyleVo lifeStyleVo = getExtWeatherService().getLifeStyle(city);
+        List<DailyForecastVo> dailyForecastVoList = getExtWeatherService().getForecast(city);
 
         WeatherVo weatherVo = assembleWeatherVo(realTimeWeatherVo, lifeStyleVo, dailyForecastVoList, city);
 
@@ -108,7 +94,7 @@ public class WeatherServiceImpl implements WeatherService {
      */
     @Override
     public RealTimeWeatherVo getRealTime(Citycode city) {
-        return extWeatherService.getRealTime(city);
+        return getExtWeatherService().getRealTime(city);
     }
 
     /**
@@ -118,7 +104,7 @@ public class WeatherServiceImpl implements WeatherService {
      */
     @Override
     public LifeStyleVo getLifeStyle(Citycode city) {
-        return extWeatherService.getLifeStyle(city);
+        return getExtWeatherService().getLifeStyle(city);
     }
 
     /**
@@ -128,7 +114,7 @@ public class WeatherServiceImpl implements WeatherService {
      */
     @Override
     public List<DailyForecastVo> getForecast(Citycode city) {
-        return extWeatherService.getForecast(city);
+        return getExtWeatherService().getForecast(city);
     }
 
     //region 内部函数

@@ -1,5 +1,6 @@
 package org.ccccye.weather.service.impl;
 
+import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import org.ccccye.weather.dto.*;
@@ -31,7 +32,8 @@ public class ExtHeWeatherServiceImpl implements ExtWeatherService {
     /**
      * 和风天气秘钥
      */
-    @Value("${weather.he.key}")
+//    @Value("${weather.he.key}")
+    @NacosValue(value = "${weather.he.key}", autoRefreshed = false)
     private String heWeatherKey;
 
 

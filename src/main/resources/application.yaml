@@ -1,11 +1,15 @@
-weather:
+#weather:
 #  type: he  # he:和风,help:帮助之家
-  he:
-    key: e914aa68a5c943bb8d96504b33ce0157
+#  he:
+#    key: e914aa68a5c943bb8d96504b33ce0157
 
 nacos:
   config:
-    server-addr: 47.106.122.7:8848  #内网地址：172.18.61.10，外网地址：47.106.122.7
+    endpoint: acm.aliyun.com
+    namespace: d111caf7-0066-4ff3-8471-e9306c9253d9
+    access-key: LTAI4FdJo3oT8ztgQif2yqA2
+    secret-key: dzjiJcUNgFI0UPK7fYnS5NRU8y82V2
+    #server-addr: 47.106.122.7:8848  #内网地址：172.18.61.10，外网地址：47.106.122.7
 
 # redis配置
 spring:

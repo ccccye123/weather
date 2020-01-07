@@ -1,4 +1,4 @@
-package org.ccccye.weather.aop;
+package org.ccccye.weather.aspect;
 
 import com.google.common.base.Strings;
 import org.apache.commons.logging.Log;
@@ -18,8 +18,8 @@ import java.util.concurrent.TimeUnit;
  */
 @Aspect
 @Component
-public class RestControllerRequestLimitAop {
-    private final static Log logger = LogFactory.getLog(RestControllerRequestLimitAop.class);
+public class RestControllerRequestLimitAspect {
+    private final static Log logger = LogFactory.getLog(RestControllerRequestLimitAspect.class);
 
     @Autowired
     private RedisTemplate<String, String> redisTemplate;

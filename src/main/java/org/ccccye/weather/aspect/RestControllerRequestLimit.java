@@ -1,4 +1,4 @@
-package org.ccccye.weather.aop;
+package org.ccccye.weather.aspect;
 
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
