@@ -6,10 +6,9 @@
 nacos:
   config:
     endpoint: acm.aliyun.com
-    namespace: d111caf7-0066-4ff3-8471-e9306c9253d9 # d111caf7-0066-4ff3-8471-e9306c9253d9
-    access-key: LTAI4Fr75wdbU85nLdYioPN4
-    secret-key: u8mDbYIeYYEBIwdNYpDp0wXdzOBakN
-    #server-addr: 47.106.122.7:8848  #内网地址：172.18.61.10，外网地址：47.106.122.7
+    namespace: d111caf7-0066-4ff3-8471-e9306c9253d9
+    access-key: 
+    secret-key: 
 
 
 # redis配置
@@ -18,7 +17,7 @@ spring:
     database: 0
     host: 47.106.122.7
     port: 6379
-    password: ccccye123
+    password: 
 
 # 日志
 logging:
