@@ -7,8 +7,8 @@ nacos:
   config:
     endpoint: acm.aliyun.com
     namespace: d111caf7-0066-4ff3-8471-e9306c9253d9
-    access-key: LTAI4Fgm1N8PjwHZbZVKKsXy
-    secret-key: oD1IBhaIzR7pNRFqvjX8ibfF1CkJM0
+    access-key: 
+    secret-key: 
 
 
 # redis配置
