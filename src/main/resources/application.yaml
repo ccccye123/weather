@@ -1,12 +1,8 @@
-#weather:
-#  type: he  # he:和风,help:帮助之家
-#  he:
-#    key: e914aa68a5c943bb8d96504b33ce0157
 
 nacos:
   config:
-    endpoint: acm.aliyun.com
-    namespace: d111caf7-0066-4ff3-8471-e9306c9253d9
+    endpoint:
+    namespace:
     access-key: 
     secret-key: 
 
@@ -15,9 +11,9 @@ nacos:
 spring:
   redis:
     database: 0
-    host: 47.106.122.7
-    port: 6379
-    password: ccccye123
+    host:
+    port:
+    password:
 
 # 日志
 logging:
