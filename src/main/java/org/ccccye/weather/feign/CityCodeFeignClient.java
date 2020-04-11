@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 /**
  * 城市编码接口
  */
-@FeignClient(name = "cityCode", url = "https://www.ccccye.cn/city")
+@FeignClient(name = "cityCode", url = "https://ccccye.cn/city")
 public interface CityCodeFeignClient {
     @RequestMapping(value = "/queryByAdcode/{code}", method = RequestMethod.GET)
     Citycode queryByAdcode(@PathVariable("code") String code);
