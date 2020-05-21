@@ -3,8 +3,8 @@ nacos:
   config:
     endpoint:
     namespace:
-    access-key: 
-    secret-key: 
+    access-key:
+    secret-key:
 
 
 # redis配置

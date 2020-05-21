@@ -9,4 +9,4 @@ mvn clean package -Dmaven.test.skip=true
 cp target/weather.jar ../
 
 # 用docker-compose 部署更新
-#docker-compose up --build -d &
+docker-compose up --build -d &
