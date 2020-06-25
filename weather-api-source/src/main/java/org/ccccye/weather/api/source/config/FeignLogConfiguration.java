@@ -1,4 +1,4 @@
-package org.ccccye.weather.config;
+package org.ccccye.weather.api.source.config;
 
 import feign.Logger;
 import org.springframework.context.annotation.Bean;

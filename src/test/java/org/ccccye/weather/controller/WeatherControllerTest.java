@@ -3,8 +3,6 @@ package org.ccccye.weather.controller;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.ccccye.weather.common.ServerResponse;
-import org.ccccye.weather.common.utils.SimpleHttpTestUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

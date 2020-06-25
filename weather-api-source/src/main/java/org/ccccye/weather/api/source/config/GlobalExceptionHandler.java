@@ -1,4 +1,4 @@
-package org.ccccye.weather.config;
+package org.ccccye.weather.api.source.config;
 
 import org.ccccye.weather.common.ServerResponse;
 import org.springframework.web.bind.annotation.ControllerAdvice;
