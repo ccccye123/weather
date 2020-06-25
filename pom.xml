@@ -10,6 +10,7 @@
 		<module>robot</module>
 		<module>admin</module>
         <module>weather-eureka</module>
+        <module>weather-zuul</module>
     </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
