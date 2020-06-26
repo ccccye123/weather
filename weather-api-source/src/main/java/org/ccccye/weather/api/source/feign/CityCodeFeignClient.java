@@ -1,5 +1,6 @@
 package org.ccccye.weather.api.source.feign;
 
+import org.ccccye.weather.common.dto.Citycode;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -2,7 +2,8 @@ package org.ccccye.weather.common.dto.he;
 
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+//import com.fasterxml.jackson.annotation.JsonProperty;
+import org.codehaus.jackson.annotate.JsonProperty;
 
 import java.util.List;
 

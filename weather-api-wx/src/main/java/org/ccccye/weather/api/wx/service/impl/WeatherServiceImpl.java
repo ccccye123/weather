@@ -27,19 +27,19 @@ public class WeatherServiceImpl implements WeatherService {
     /**
      * 城市编码接口
      */
-    @Autowired
-    private CityCodeFeignClient cityCodeFeignClient;
+//    @Autowired
+//    private CityCodeFeignClient cityCodeFeignClient;
 
     /**
      * 和风天气接口
      */
-    @Autowired
-    private ExtHeWeatherServiceImpl extHeWeatherService;
+//    @Autowired
+//    private ExtHeWeatherServiceImpl extHeWeatherService;
     /**
      * 帮助之家天气接口
      */
-    @Autowired
-    private ExtHelpWeatherServiceImpl extHelpWeatherService;
+//    @Autowired
+//    private ExtHelpWeatherServiceImpl extHelpWeatherService;
 
     /**
      * 天气类型
@@ -52,11 +52,13 @@ public class WeatherServiceImpl implements WeatherService {
      * @return
      */
     private ExtWeatherService getExtWeatherService(){
-        if ("he".equals(typeWeather)){
-            return extHeWeatherService;
-        }else{
-            return extHelpWeatherService;
-        }
+        // todo
+        return null;
+//        if ("he".equals(typeWeather)){
+//            return extHeWeatherService;
+//        }else{
+//            return extHelpWeatherService;
+//        }
     }
 
     /**
@@ -70,7 +72,9 @@ public class WeatherServiceImpl implements WeatherService {
             return ServerResponse.createByErrorMessage("Adcode不能为空");
         }
 
-        Citycode city = cityCodeFeignClient.queryByAdcode(adcode);
+//        Citycode city = cityCodeFeignClient.queryByAdcode(adcode);
+        // todo
+        Citycode city = null;
         if (city == null) {
             return ServerResponse.createByErrorMessage("获取城市编码失败");
         }

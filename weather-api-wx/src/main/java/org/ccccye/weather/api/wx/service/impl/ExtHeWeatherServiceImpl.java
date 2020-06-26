@@ -3,6 +3,7 @@ package org.ccccye.weather.api.wx.service.impl;
 import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
+import org.ccccye.weather.common.dto.Citycode;
 import org.ccccye.weather.common.dto.he.Forecast;
 import org.ccccye.weather.common.dto.he.HeWeather;
 import org.ccccye.weather.common.dto.he.Lifestyle;
@@ -23,13 +24,13 @@ public class ExtHeWeatherServiceImpl implements ExtWeatherService {
     /**
      * 和风天气feign
      */
-    @Autowired
-    private HeWeatherFeignClient heWeatherFeignClient;
+//    @Autowired
+//    private HeWeatherFeignClient heWeatherFeignClient;
 
     /**
      * 和风天气秘钥
      */
-//    @Value("${weather.he.key}")
+    //@Value("${weather.he.key}")
     @NacosValue(value = "${weather.he.key}", autoRefreshed = false)
     private String heWeatherKey;
 
@@ -43,7 +44,9 @@ public class ExtHeWeatherServiceImpl implements ExtWeatherService {
     public RealTimeWeatherVo getRealTime(Citycode city) {
         RealTimeWeatherVo vo = new RealTimeWeatherVo();
 
-        HeWeather heWeather = heWeatherFeignClient.request("now", city.getCity_CN(), heWeatherKey);
+       // HeWeather heWeather = heWeatherFeignClient.request("now", city.getCity_CN(), heWeatherKey);
+        // todo
+        HeWeather heWeather = null;
         Now heNow = heWeather.getHeWeather6().get(0).getNow();
 
         vo.setTemp(heNow.getTmp());
@@ -68,7 +71,9 @@ public class ExtHeWeatherServiceImpl implements ExtWeatherService {
     public LifeStyleVo getLifeStyle(Citycode city) {
         LifeStyleVo vo = new LifeStyleVo();
 
-        HeWeather heWeather = heWeatherFeignClient.request("lifestyle", city.getCity_CN(), heWeatherKey);
+        //HeWeather heWeather = heWeatherFeignClient.request("lifestyle", city.getCity_CN(), heWeatherKey);
+        // todo
+        HeWeather heWeather = null;
         List<Lifestyle> lifestyleList = heWeather.getHeWeather6().get(0).getLifestyle();
 
         vo.setComf(assembleLifeStyleItemVo(findLife(lifestyleList, "comf")));
@@ -91,7 +96,9 @@ public class ExtHeWeatherServiceImpl implements ExtWeatherService {
     public List<DailyForecastVo> getForecast(Citycode city) {
         List<DailyForecastVo> voList = Lists.newArrayList();
 
-        HeWeather heWeather = heWeatherFeignClient.request("forecast", city.getCity_CN(), heWeatherKey);
+        //HeWeather heWeather = heWeatherFeignClient.request("forecast", city.getCity_CN(), heWeatherKey);
+        // todo
+        HeWeather heWeather = null;
         List<Forecast> forecastList = heWeather.getHeWeather6().get(0).getDaily_forecast();
         for (Forecast item : forecastList){
             DailyForecastVo forecastVo = new DailyForecastVo();

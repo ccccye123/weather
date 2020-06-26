@@ -11,7 +11,8 @@
 		<module>admin</module>
         <module>weather-eureka</module>
         <module>weather-zuul</module>
-    </modules>
+		<module>weather-citycode</module>
+	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -25,7 +26,6 @@
 	<description>weather app</description>
 
 
-
 	<properties>
 		<java.version>1.8</java.version>
 		<nacos-config-spring-boot.version>0.2.4</nacos-config-spring-boot.version>
@@ -37,46 +37,8 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-openfeign</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.9.12</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-redis</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-aop</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>20.0</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.alibaba.boot</groupId>
-			<artifactId>nacos-config-spring-boot-starter</artifactId>
-			<version>${nacos-config-spring-boot.version}</version>
 		</dependency>
 	</dependencies>
 

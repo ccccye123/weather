@@ -15,8 +15,8 @@ import java.util.List;
 
 @Service
 public class ExtHelpWeatherServiceImpl implements ExtWeatherService {
-    @Autowired
-    private WeatherFeignClient weatherFeignClient;
+//    @Autowired
+//    private WeatherFeignClient weatherFeignClient;
 
     /**
      * 获取实时天气
@@ -27,8 +27,9 @@ public class ExtHelpWeatherServiceImpl implements ExtWeatherService {
     public RealTimeWeatherVo getRealTime(Citycode city) {
         RealTimeWeatherVo vo = new RealTimeWeatherVo();
 
-        Weather weather = weatherFeignClient.todayWeather(city.getCity_ID());
-
+        //Weather weather = weatherFeignClient.todayWeather(city.getCity_ID());
+        // todo
+        Weather weather = null;
         vo.setTemp(weather.getTemp());
         vo.setWeather(weather.getWeather());
         //vo.setWindDegree();
@@ -51,7 +52,9 @@ public class ExtHelpWeatherServiceImpl implements ExtWeatherService {
     public LifeStyleVo getLifeStyle(Citycode city) {
         LifeStyleVo vo = new LifeStyleVo();
 
-        Life life = weatherFeignClient.lifeWeather(city.getCity_CN());
+        //Life life = weatherFeignClient.lifeWeather(city.getCity_CN());
+        // todo
+        Life life = null;
         LifeGradeList lifeGradeList = life.getData();
 
         vo.setComf(assembleLifeStyleItemVo(lifeGradeList.getZs_ssd()));
@@ -73,7 +76,9 @@ public class ExtHelpWeatherServiceImpl implements ExtWeatherService {
     public List<DailyForecastVo> getForecast(Citycode city) {
         List<DailyForecastVo> voList = Lists.newArrayList();
 
-        Weather6D weather6D = weatherFeignClient.d6Weather(city.getCity_ID());
+        //Weather6D weather6D = weatherFeignClient.d6Weather(city.getCity_ID());
+        // todo
+        Weather6D weather6D = null;
         List<Weather6Detail> weather6DetailList = weather6D.getData().getForecast();
 
         for (int i =0;i<weather6DetailList.size();i++){
