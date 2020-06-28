@@ -1,0 +1,11 @@
+server:
+  port: 7020
+
+spring:
+  application:
+    name: source-prod
+
+weather:
+  type: he
+  he:
+    key:

@@ -1,4 +1,4 @@
-package org.ccccye.weather.api.wx;
+package org.ccccye.weather.api.source;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,10 +6,10 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
-@EnableEurekaClient
 @EnableFeignClients
-public class WxApplication {
+@EnableEurekaClient
+public class WeatherSourceApplication {
     public static void main(String[] args) {
-        SpringApplication.run(WxApplication.class, args);
+        SpringApplication.run(WeatherSourceApplication.class, args);
     }
 }

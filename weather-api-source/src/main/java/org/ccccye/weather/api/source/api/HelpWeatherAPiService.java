@@ -1,4 +1,4 @@
-package org.ccccye.weather.api.source.feign;
+package org.ccccye.weather.api.source.api;
 
 import org.ccccye.weather.common.dto.Life;
 import org.ccccye.weather.common.dto.Weather;
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 /**
  * 天气接口
  */
-@FeignClient(name = "weather", url = "http://api.help.bj.cn")
-public interface WeatherFeignClient {
+@FeignClient(name = "weatherHelp", url = "http://api.help.bj.cn")
+public interface HelpWeatherAPiService {
 
     @RequestMapping(value = "/apis/weather?id={id}", method = RequestMethod.GET)
     Weather todayWeather(@PathVariable("id") String id);

@@ -1,16 +1,17 @@
-package org.ccccye.weather.api.wx.service.impl;
+package org.ccccye.weather.api.source.service.impl;
 
-import com.alibaba.nacos.api.config.annotation.NacosValue;
+//import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.google.common.base.Strings;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.ccccye.weather.api.source.api.CityCodeApiService;
 import org.ccccye.weather.common.ServerResponse;
 import org.ccccye.weather.common.dto.*;
-import org.ccccye.weather.api.source.feign.CityCodeFeignClient;
-import org.ccccye.weather.api.wx.service.ExtWeatherService;
-import org.ccccye.weather.api.wx.service.WeatherService;
+import org.ccccye.weather.api.source.service.ExtWeatherService;
+import org.ccccye.weather.api.source.service.WeatherService;
 import org.ccccye.weather.common.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -27,14 +28,14 @@ public class WeatherServiceImpl implements WeatherService {
     /**
      * 城市编码接口
      */
-//    @Autowired
-//    private CityCodeFeignClient cityCodeFeignClient;
+    @Autowired
+    private CityCodeApiService cityCodeApiService;
 
     /**
      * 和风天气接口
      */
-//    @Autowired
-//    private ExtHeWeatherServiceImpl extHeWeatherService;
+    @Autowired
+    private ExtHeWeatherServiceImpl extHeWeatherService;
     /**
      * 帮助之家天气接口
      */
@@ -44,7 +45,8 @@ public class WeatherServiceImpl implements WeatherService {
     /**
      * 天气类型
      */
-    @NacosValue(value = "${weather.type:he}", autoRefreshed = true)
+//    @NacosValue(value = "${weather.type:he}", autoRefreshed = true)
+    @Value(value = "${weather.type:he}")
     private String typeWeather;
 
     /**
@@ -52,8 +54,8 @@ public class WeatherServiceImpl implements WeatherService {
      * @return
      */
     private ExtWeatherService getExtWeatherService(){
-        // todo
-        return null;
+        return extHeWeatherService;
+
 //        if ("he".equals(typeWeather)){
 //            return extHeWeatherService;
 //        }else{
@@ -67,16 +69,16 @@ public class WeatherServiceImpl implements WeatherService {
      * @return
      */
     @Override
-    public ServerResponse getWeatherInfo(String adcode) {
+    public WeatherVo getWeatherInfo(String adcode) {
         if (Strings.isNullOrEmpty(adcode)){
-            return ServerResponse.createByErrorMessage("Adcode不能为空");
+//            return ServerResponse.createByErrorMessage("Adcode不能为空");
+            return null;
         }
 
-//        Citycode city = cityCodeFeignClient.queryByAdcode(adcode);
-        // todo
-        Citycode city = null;
+        Citycode city = cityCodeApiService.queryByAdcode(adcode);
         if (city == null) {
-            return ServerResponse.createByErrorMessage("获取城市编码失败");
+//            return ServerResponse.createByErrorMessage("获取城市编码失败");
+            return null;
         }
 
         RealTimeWeatherVo realTimeWeatherVo = getExtWeatherService().getRealTime(city);
@@ -85,7 +87,7 @@ public class WeatherServiceImpl implements WeatherService {
 
         WeatherVo weatherVo = assembleWeatherVo(realTimeWeatherVo, lifeStyleVo, dailyForecastVoList, city);
 
-        return ServerResponse.createBySuccess(weatherVo);
+        return weatherVo;
     }
 
     /**

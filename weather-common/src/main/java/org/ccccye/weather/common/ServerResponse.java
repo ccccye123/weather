@@ -1,7 +1,10 @@
 package org.ccccye.weather.common;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
+//import org.codehaus.jackson.annotate.JsonIgnore;
+//import org.codehaus.jackson.map.annotate.JsonSerialize;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL) //保证序列化Json时,如果是null对象,key也会消失
 public class ServerResponse<T> {

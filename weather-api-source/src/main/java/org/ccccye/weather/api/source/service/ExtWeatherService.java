@@ -1,4 +1,4 @@
-package org.ccccye.weather.api.wx.service;
+package org.ccccye.weather.api.source.service;
 
 import org.ccccye.weather.common.dto.Citycode;
 import org.ccccye.weather.common.vo.DailyForecastVo;

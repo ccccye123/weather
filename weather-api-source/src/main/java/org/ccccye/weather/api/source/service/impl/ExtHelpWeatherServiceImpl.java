@@ -1,9 +1,10 @@
-package org.ccccye.weather.api.wx.service.impl;
+package org.ccccye.weather.api.source.service.impl;
 
 import com.google.common.collect.Lists;
+import org.ccccye.weather.api.source.api.HeWeatherApiService;
+import org.ccccye.weather.api.source.api.HelpWeatherAPiService;
 import org.ccccye.weather.common.dto.*;
-import org.ccccye.weather.api.source.feign.WeatherFeignClient;
-import org.ccccye.weather.api.wx.service.ExtWeatherService;
+import org.ccccye.weather.api.source.service.ExtWeatherService;
 import org.ccccye.weather.common.vo.DailyForecastVo;
 import org.ccccye.weather.common.vo.LifeStyleItemVo;
 import org.ccccye.weather.common.vo.LifeStyleVo;
@@ -15,8 +16,8 @@ import java.util.List;
 
 @Service
 public class ExtHelpWeatherServiceImpl implements ExtWeatherService {
-//    @Autowired
-//    private WeatherFeignClient weatherFeignClient;
+    @Autowired
+    private HelpWeatherAPiService helpWeatherAPiService;
 
     /**
      * 获取实时天气
@@ -27,9 +28,8 @@ public class ExtHelpWeatherServiceImpl implements ExtWeatherService {
     public RealTimeWeatherVo getRealTime(Citycode city) {
         RealTimeWeatherVo vo = new RealTimeWeatherVo();
 
-        //Weather weather = weatherFeignClient.todayWeather(city.getCity_ID());
-        // todo
-        Weather weather = null;
+        Weather weather = helpWeatherAPiService.todayWeather(city.getCity_ID());
+
         vo.setTemp(weather.getTemp());
         vo.setWeather(weather.getWeather());
         //vo.setWindDegree();
@@ -52,9 +52,7 @@ public class ExtHelpWeatherServiceImpl implements ExtWeatherService {
     public LifeStyleVo getLifeStyle(Citycode city) {
         LifeStyleVo vo = new LifeStyleVo();
 
-        //Life life = weatherFeignClient.lifeWeather(city.getCity_CN());
-        // todo
-        Life life = null;
+        Life life = helpWeatherAPiService.lifeWeather(city.getCity_CN());
         LifeGradeList lifeGradeList = life.getData();
 
         vo.setComf(assembleLifeStyleItemVo(lifeGradeList.getZs_ssd()));
@@ -76,9 +74,7 @@ public class ExtHelpWeatherServiceImpl implements ExtWeatherService {
     public List<DailyForecastVo> getForecast(Citycode city) {
         List<DailyForecastVo> voList = Lists.newArrayList();
 
-        //Weather6D weather6D = weatherFeignClient.d6Weather(city.getCity_ID());
-        // todo
-        Weather6D weather6D = null;
+        Weather6D weather6D = helpWeatherAPiService.d6Weather(city.getCity_ID());
         List<Weather6Detail> weather6DetailList = weather6D.getData().getForecast();
 
         for (int i =0;i<weather6DetailList.size();i++){

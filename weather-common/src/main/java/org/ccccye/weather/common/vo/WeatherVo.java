@@ -1,8 +1,8 @@
 package org.ccccye.weather.common.vo;
 
 
-//import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+//import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import java.util.List;
 

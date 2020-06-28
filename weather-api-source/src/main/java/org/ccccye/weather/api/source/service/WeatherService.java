@@ -1,10 +1,11 @@
-package org.ccccye.weather.api.wx.service;
+package org.ccccye.weather.api.source.service;
 
 import org.ccccye.weather.common.ServerResponse;
 import org.ccccye.weather.common.dto.Citycode;
 import org.ccccye.weather.common.vo.DailyForecastVo;
 import org.ccccye.weather.common.vo.LifeStyleVo;
 import org.ccccye.weather.common.vo.RealTimeWeatherVo;
+import org.ccccye.weather.common.vo.WeatherVo;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ public interface WeatherService {
      * @param adcode
      * @return
      */
-    ServerResponse getWeatherInfo(String adcode);
+    WeatherVo getWeatherInfo(String adcode);
 
     /**
      * 获取实时天气
