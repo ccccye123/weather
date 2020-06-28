@@ -25,6 +25,7 @@
     </dependencies>
 
     <build>
+        <finalName>weather-zuul</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
