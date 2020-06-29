@@ -7,8 +7,8 @@
 		<module>weather-api-wx</module>
 		<module>weather-common</module>
 		<module>weather-api-source</module>
-		<module>robot</module>
-		<module>admin</module>
+		<module>weather-robot</module>
+		<module>weather-admin</module>
         <module>weather-eureka</module>
         <module>weather-zuul</module>
 		<module>weather-citycode</module>
@@ -59,12 +59,25 @@
 	</dependencyManagement>
 
 	<build>
-		<!--指定编译输出的jar包名称-->
-		<finalName>weather</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+<!--				<groupId>org.apache.maven.plugins</groupId>-->
+<!--				<artifactId>maven-compiler-plugin</artifactId>-->
+<!--				<version>3.1</version>-->
+<!--				<configuration>-->
+<!--					<source>${java.version}</source>-->
+<!--					<target>${java.version}</target>-->
+<!--				</configuration>-->
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.20.1</version>
+				<configuration>
+					<skipTests>true</skipTests>    <!--默认关掉单元测试 -->
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

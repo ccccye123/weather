@@ -1,6 +1,6 @@
 package org.ccccye.weather.api.wx.service.impl;
 
-import org.ccccye.weather.api.source.service.WeatherService;
+//import org.ccccye.weather.api.source.service.WeatherService;
 import org.ccccye.weather.api.wx.api.WeatherSourceApiService;
 import org.ccccye.weather.api.wx.service.WxService;
 import org.ccccye.weather.common.ServerResponse;
