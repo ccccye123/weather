@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: source-prod
+    name: source
 
 weather:
   type: he

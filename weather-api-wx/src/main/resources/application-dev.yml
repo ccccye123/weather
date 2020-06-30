@@ -5,10 +5,6 @@ spring:
   application:
     name: wx
 
-weather:
-  he:
-    key:
-
 eureka:
   client:
     service-url:
