@@ -29,7 +29,6 @@
 | weather-api-source | 2        | 天气数据源 | 7020-7021|
 | weather-robot      | 1        | 机器人爬虫，爬中国天气网web页面数据| 7030|
 | weather-admin      | 1        | Web管理页面，用户、日志管理| 7003|
-| weather-common| 1 | 公共模块 | |
 | eureka        |2|微服务基础-服务发现| 7001-7002 |
 | zuul |1|微服务基础-网关| 7000 |
 | mysql |2|关系型数据库，主从同步| |

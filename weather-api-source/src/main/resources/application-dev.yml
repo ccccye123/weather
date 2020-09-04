@@ -1,0 +1,16 @@
+server:
+  port: 7020
+
+spring:
+  application:
+    name: source
+
+weather:
+  type: he
+  he:
+    key: e914aa68a5c943bb8d96504b33ce0157
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka

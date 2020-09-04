@@ -8,10 +8,9 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://47.106.122.7:7001/eureka/
+      defaultZone: http://localhost:7001/eureka/
   instance:
-#    prefer-ip-address: true
-    instance-id: http://2455r6l881.qicp.vip/
+    prefer-ip-address: true
 
 logging:
   level:
