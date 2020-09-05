@@ -31,9 +31,9 @@ public class ExtHeWeatherServiceImpl implements ExtWeatherService {
     /**
      * 和风天气秘钥
      */
-    @Value("${weather.he.key}")
+//    @Value("${weather.he.key}")
 //    @NacosValue(value = "${weather.he.key}", autoRefreshed = false)
-    private String heWeatherKey;
+    private String heWeatherKey = "e914aa68a5c943bb8d96504b33ce0157";
 
 
     /**

@@ -12,6 +12,9 @@ import org.ccccye.weather.api.source.service.WeatherService;
 import org.ccccye.weather.common.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -64,7 +67,7 @@ public class WeatherServiceImpl implements WeatherService {
     }
 
     /**
-     * 获取天气数据
+     * 根据adcode获取天气数据
      * @param adcode
      * @return
      */

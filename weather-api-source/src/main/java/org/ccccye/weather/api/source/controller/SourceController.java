@@ -17,5 +17,4 @@ public class SourceController {
     public WeatherVo get(String adcode){
         return weatherService.getWeatherInfo(adcode);
     }
-
 }
