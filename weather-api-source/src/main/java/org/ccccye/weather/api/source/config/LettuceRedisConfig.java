@@ -2,6 +2,7 @@ package org.ccccye.weather.api.source.config;
 
 
 import org.springframework.cache.CacheManager;
+import org.springframework.cache.interceptor.CacheInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheManager;
@@ -9,6 +10,7 @@ import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactor
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -19,6 +21,9 @@ public class LettuceRedisConfig {
 
     @Bean
     public CacheManager cacheManager(RedisTemplate redisTemplate) {
+
+
+
         RedisCacheManager rcm = new RedisCacheManager();
         //设置缓存过期时间
         Map<String, Long> expires = new HashMap<>();

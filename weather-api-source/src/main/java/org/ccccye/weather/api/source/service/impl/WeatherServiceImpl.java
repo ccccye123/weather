@@ -72,6 +72,7 @@ public class WeatherServiceImpl implements WeatherService {
      * @return
      */
     @Override
+    @Cacheable
     public WeatherVo getWeatherInfo(String adcode) {
         if (Strings.isNullOrEmpty(adcode)){
 //            return ServerResponse.createByErrorMessage("Adcode不能为空");
