@@ -8,11 +8,11 @@ spring:
     # 数据库索引
     database: 0
     # 服务地址
-    host: 127.0.0.1
+    host: 47.106.122.7
     # 服务端口
     port: 6379
     # 连接密钥
-    password:
+    password: '@123456'
     # 超时（毫秒）
     timeout: 3000
     lettuce:
@@ -21,8 +21,6 @@ spring:
         max-wait: -1
         max-idle: 8
         min-idle: 0
-
-
 
 weather:
   type: he

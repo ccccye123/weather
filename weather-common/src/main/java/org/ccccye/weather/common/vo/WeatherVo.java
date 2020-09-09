@@ -4,10 +4,11 @@ package org.ccccye.weather.common.vo;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 //import org.codehaus.jackson.map.annotate.JsonSerialize;
 
+import java.io.Serializable;
 import java.util.List;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-public class WeatherVo {
+public class WeatherVo implements Serializable {
     /**
      * 今天日期
      */

@@ -66,32 +66,40 @@ public class WeatherServiceImpl implements WeatherService {
 //        }
     }
 
+    private static int testID = 0;
     /**
      * 根据adcode获取天气数据
      * @param adcode
      * @return
      */
     @Override
-    @Cacheable
+    @Cacheable(value = "cacheTest#60",key = "#adcode")
     public WeatherVo getWeatherInfo(String adcode) {
-        if (Strings.isNullOrEmpty(adcode)){
-//            return ServerResponse.createByErrorMessage("Adcode不能为空");
-            return null;
-        }
+        System.out.println(adcode);
+        WeatherVo weather = new WeatherVo();
+        weather.setAdCode(adcode);
+        weather.setCityID(String.valueOf(testID));
+        testID++;
+        return weather;
 
-        Citycode city = cityCodeApiService.queryByAdcode(adcode);
-        if (city == null) {
-//            return ServerResponse.createByErrorMessage("获取城市编码失败");
-            return null;
-        }
-
-        RealTimeWeatherVo realTimeWeatherVo = getExtWeatherService().getRealTime(city);
-        LifeStyleVo lifeStyleVo = getExtWeatherService().getLifeStyle(city);
-        List<DailyForecastVo> dailyForecastVoList = getExtWeatherService().getForecast(city);
-
-        WeatherVo weatherVo = assembleWeatherVo(realTimeWeatherVo, lifeStyleVo, dailyForecastVoList, city);
-
-        return weatherVo;
+//        if (Strings.isNullOrEmpty(adcode)){
+////            return ServerResponse.createByErrorMessage("Adcode不能为空");
+//            return null;
+//        }
+//
+//        Citycode city = cityCodeApiService.queryByAdcode(adcode);
+//        if (city == null) {
+////            return ServerResponse.createByErrorMessage("获取城市编码失败");
+//            return null;
+//        }
+//
+//        RealTimeWeatherVo realTimeWeatherVo = getExtWeatherService().getRealTime(city);
+//        LifeStyleVo lifeStyleVo = getExtWeatherService().getLifeStyle(city);
+//        List<DailyForecastVo> dailyForecastVoList = getExtWeatherService().getForecast(city);
+//
+//        WeatherVo weatherVo = assembleWeatherVo(realTimeWeatherVo, lifeStyleVo, dailyForecastVoList, city);
+//
+//        return weatherVo;
     }
 
     /**

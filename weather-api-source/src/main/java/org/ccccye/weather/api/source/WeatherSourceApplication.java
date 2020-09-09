@@ -7,7 +7,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableFeignClients
-@EnableEurekaClient
+//@EnableEurekaClient
 public class WeatherSourceApplication {
     public static void main(String[] args) {
         SpringApplication.run(WeatherSourceApplication.class, args);
