@@ -1,6 +1,8 @@
 package org.ccccye.weather.common.dto;
 
-public class Citycode {
+import java.io.Serializable;
+
+public class Citycode implements Serializable {
     private String City_ID;
     private String City_EN;
     private String City_CN;

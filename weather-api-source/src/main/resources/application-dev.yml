@@ -12,7 +12,7 @@ spring:
     # 服务端口
     port: 6379
     # 连接密钥
-    password: '@123456'
+    password:
     # 超时（毫秒）
     timeout: 3000
     lettuce:
@@ -22,7 +22,9 @@ spring:
         max-idle: 8
         min-idle: 0
 
-
+logging:
+  level:
+    root: info
 
 weather:
   type: he
@@ -31,6 +33,6 @@ weather:
 
 eureka:
   client:
-    enabled: false
+    enabled: true
     service-url:
-      defaultZone: http://localhost:7001/eureka
+      defaultZone: http://47.106.122.7:7001/eureka

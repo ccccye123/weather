@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-public class WeatherVo implements Serializable {
+public class WeatherVo {
     /**
      * 今天日期
      */

@@ -42,7 +42,11 @@ public class CustomizeRedisCache extends RedisCache {
      */
     @Override
     public void put(Object key, Object value) {
+
+
         String name = super.getName();
+        System.out.println("未命中缓存#name:"+name+"#key:"+key.toString());
+
         //是否按照指定的格式
         if (Pattern.matches(REGEX_STR, name)) {
             List<String> keyList = Arrays.asList(name.split(Splitter));
