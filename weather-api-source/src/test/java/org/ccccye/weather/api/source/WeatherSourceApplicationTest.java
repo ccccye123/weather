@@ -33,4 +33,26 @@ public class WeatherSourceApplicationTest {
         WeatherVo v2 = weatherService.getWeatherInfo("456");
         System.out.println(v2);
     }
+
+    @Test
+    public void redisListTest(){
+        long ret = redisTemplate.opsForList().rightPush("book", "Study1");
+        System.out.println("s1:ret:"+ret);
+        ret = redisTemplate.opsForList().rightPush("book", "Study2");
+        System.out.println("s2:ret:"+ret);
+        ret = redisTemplate.opsForList().rightPush("book", "Study3");
+        System.out.println("s3:ret:"+ret);
+    }
+
+    @Test
+    public void redisListLPOPTest(){
+         String book = (String) redisTemplate.opsForList().leftPop("book");
+        System.out.println(book);
+        book = (String) redisTemplate.opsForList().leftPop("book");
+        System.out.println(book);
+        book = (String) redisTemplate.opsForList().leftPop("book");
+        System.out.println(book);
+        book = (String) redisTemplate.opsForList().leftPop("book");
+        System.out.println(book);
+    }
 }
